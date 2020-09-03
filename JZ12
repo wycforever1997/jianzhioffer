@@ -1,0 +1,14 @@
+public class Solution {
+    public double Power(double base, int exponent) {
+        int n=Math.abs(exponent);
+      double result=1;
+      while(n!=0){
+          if((n&1)==1){
+              result*=base;
+          }
+          base*=base;
+          n=n>>1;
+      }
+     return exponent < 0 ? 1/ result : result;
+  }
+}
