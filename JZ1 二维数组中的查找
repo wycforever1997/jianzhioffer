@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool Find(int target, vector<vector<int> > array) {
+        int tempRow=0;
+        int tempCol=array[0].size()-1;
+        while(tempRow<array.size()&&tempCol>=0){
+            if(array[tempRow][tempCol]==target)
+                return true;
+            else if(array[tempRow][tempCol]<target)
+                tempRow++;
+            else
+                tempCol--;
+        }
+        return false;
+    }
+};
