@@ -1,0 +1,19 @@
+public class Solution {
+    public String replaceSpace(StringBuffer str) {
+    	if(str==null)
+            return null;
+        
+        StringBuilder newString=new StringBuilder();
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i)==' '){
+                newString.append('%');
+                newString.append('2');
+                newString.append('0');
+            }
+            else{
+                newString.append(str.charAt(i));
+            }
+        }
+        return newString.toString();
+    }
+}
