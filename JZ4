@@ -1,0 +1,33 @@
+/**
+ * Definition for binary tree
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+     public TreeNode reConstructBinaryTree(int [] pre,int [] in) {
+        if(pre==null||in==null)
+            return null;
+
+        TreeNode root=reConstructChildTree(pre, 0, pre.length-1, in, 0, in.length-1);
+        return root;
+    }
+
+    public TreeNode reConstructChildTree(int[] pre,int startPre,int endPre,int[]in,int startIn,int endIn){
+        if(startPre>endPre||startIn>endIn){
+            return null;
+        }
+        TreeNode root=new TreeNode(pre[startPre]);//前序遍历的首元素为一颗子树的根结点
+        for(int i=startIn;i<=endIn;i++){
+            if(pre[startPre]==in[i]){
+                root.left=reConstructChildTree(pre, startPre+1, startPre+i-startIn, in, startIn, i-1);
+                root.right=reConstructChildTree(pre,startPre+i-startIn+1 , endPre, in, i+1, endIn);
+                break;
+            }
+        }
+        return root;
+    }
+}
