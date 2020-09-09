@@ -1,0 +1,19 @@
+#
+#
+# @param array int整型一维数组
+# @return int整型一维数组
+#
+
+def reOrderArray( array ):
+    result = []
+    result2 = []
+    for i in range(len(array)):
+        if array[i]%2 !=0:
+            result.append(array[i])
+        else:
+            result2.append(array[i])
+    return result +result2
+
+
+array = [2, 4, 6, 1, 3, 5, 7]
+print(reOrderArray(array))
