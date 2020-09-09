@@ -1,0 +1,24 @@
+# -*- coding:utf-8 -*-
+# 考虑输入的多种情况，如：链表为空，k等于0，k大于链表长度
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+class Solution:
+    def FindKthToTail(self, head, k):
+        if (head == None) or (k == 0):
+            return None
+
+        left = right = head
+        i = 2
+        while right.next != None:
+            if i <= k:
+                right = right.next
+                i += 1
+            else:
+                right = right.next
+                left = left.next
+        if i <= k:
+            return None
+        return left
